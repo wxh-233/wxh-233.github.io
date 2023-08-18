@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>『开摆向』封装万物 | wxh666</title>
+        <meta name="author" content="wxh666" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/an.webp" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>WXH666</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WXH666</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>『开摆向』封装万物</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/others/" style="color: #03a9f4">others</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>为了<del>节省写数据结构的时间</del><br>方便建立多个相同的数据结构<del>其实不单单是数据结构</del>，准备把许多数据结构用结构体封装一下来用</p>
+<hr>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><pre><code class="cpp">namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+        void erase() &#123;cnt=0;memset(h,0,sizeof(h));return;&#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;;
+&#125;;
+</code></pre>
+<span id="more"></span>
+<p>使用以下方法建立链式前向星</p>
+<pre><code class="cpp">lq x;
+</code></pre>
+<p>使用以下方法遍历</p>
+<pre><code class="cpp">F(x,u)//x为建立的结构体变量名 u为开始遍历的点
+&#123;
+    
+&#125;
+</code></pre>
+<p>在循环中使用变量 $v$ $w$<br>获取终点的编号以及边权的值</p>
+<hr>
+<h1 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h1><h2 id="线段树基础"><a href="#线段树基础" class="headerlink" title="线段树基础"></a>线段树基础</h2><pre><code class="cpp">struct x_trees&#123;
+    struct&#123;
+        int l,r,sum,lan;
+    &#125;t[2000005];
+    void build(int k,int l,int r)
+    &#123;
+        t[k].l=l;t[k].r=r;
+        if(l==r) return;
+        int mid=l+r&gt;&gt;1;
+        build(k&lt;&lt;1,l,mid);
+        build((k&lt;&lt;1)+1,mid+1,r);
+    &#125;
+&#125;;
+</code></pre>
+<h3 id="区间最大值"><a href="#区间最大值" class="headerlink" title="区间最大值"></a>区间最大值</h3><p>继承基础的代码，<del>懒标记还没写，下次补上</del></p>
+<pre><code class="cpp">struct max_x_trees:public x_trees&#123;
+    void add(int k,int x,int y)
+    &#123;
+        if(t[k].l&gt;x||t[k].r&lt;x) return;
+        if(t[k].l==t[k].r)
+        &#123;
+            t[k].sum=y;
+            return;
+        &#125;
+        add(k&lt;&lt;1,x,y);
+        add((k&lt;&lt;1)+1,x,y);
+        t[k].sum=max(t[k&lt;&lt;1].sum,t[(k&lt;&lt;1)+1].sum);
+    &#125;
+    int ask(int k,int x,int y)
+    &#123;
+        if(t[k].l&gt;y||t[k].r&lt;x) return 0;
+        if(t[k].l&gt;=x&amp;&amp;t[k].r&lt;=y) return t[k].sum;
+        return max(ask(k&lt;&lt;1,x,y),ask((k&lt;&lt;1)+1,x,y));
+    &#125;
+&#125;;
+</code></pre>
+<h3 id="区间和"><a href="#区间和" class="headerlink" title="区间和"></a>区间和</h3><p>继续继承~</p>
+<pre><code class="cpp">struct sum_x_trees:public x_trees&#123;
+    void down(int k)
+    &#123;
+        t[k&lt;&lt;1].lan+=t[k].lan;
+        t[k&lt;&lt;1].sum+=(t[k&lt;&lt;1].r-t[k&lt;&lt;1].l+1)*t[k].lan;
+        t[(k&lt;&lt;1)+1].lan+=t[k].lan;
+        t[(k&lt;&lt;1)+1].sum+=(t[(k&lt;&lt;1)+1].r-t[(k&lt;&lt;1)+1].l+1)*t[k].lan;
+        t[k].lan=0;
+    &#125;
+    void add(int k,int x,int y,int z)
+    &#123;
+        if(t[k].l&gt;y||t[k].r&lt;x) return;
+        if(t[k].l&gt;=x&amp;&amp;t[k].r&lt;=y)
+        &#123;
+            t[k].sum+=(t[k].r-t[k].l+1)*z;
+            t[k].lan+=z;
+            return;
+        &#125;
+        down(k);
+        add(k&lt;&lt;1,x,y,z);
+        add((k&lt;&lt;1)+1,x,y,z);
+        t[k].sum=t[k&lt;&lt;1].sum+t[(k&lt;&lt;1)+1].sum;
+    &#125;
+    int ask(int k,int x,int y)
+    &#123;
+        if(t[k].l&gt;y||t[k].r&lt;x) return 0;
+        if(t[k].l&gt;=x&amp;&amp;t[k].r&lt;=y) return t[k].sum;
+        down(k);
+        return ask(k&lt;&lt;1,x,y)+ask((k&lt;&lt;1)+1,x,y);
+    &#125;
+&#125;;
+</code></pre>
+<h2 id="树链剖分"><a href="#树链剖分" class="headerlink" title="树链剖分"></a>树链剖分</h2><pre><code class="cpp">
+struct cut_tree:public sum_x_trees&#123;
+    struct d&#123;
+        int num;
+        int fa,d,big,siz;
+        int xh,top;
+    &#125;e[100005];
+    int fxh[100005],cntx;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,nxt;
+        &#125;e[200005];
+        lsqxx h[100005],cnt;
+        void add(lsqxx u,lsqxx v) &#123;
+            e[++cnt].v=v;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+#define F(z,u) for(int j=z.h[u],v=z.e[j].v;j;j=z.e[j].nxt,v=z.e[j].v)
+    &#125;;
+    int start[100005];
+    void dfs1(int t)
+    &#123;
+        e[t].siz=1;
+        F(q,t)
+        &#123;
+            if(e[t].fa==v) continue;
+            e[v].d=e[t].d+1;
+            e[v].fa=t;
+            dfs1(v);
+            e[t].siz+=e[v].siz;
+            if(e[e[t].big].siz&lt;e[v].siz)
+                e[t].big=v;
+        &#125;
+    &#125;
+    void dfs2(int t)
+    &#123;
+        if(!t) return;
+        e[t].xh=++cntx;
+        trees.add(1,cntx,cntx,e[t].num);
+        fxh[cntx]=t;
+        if(e[e[t].fa].big==t) e[t].top=e[e[t].fa].top;
+        else e[t].top=t;
+        dfs2(e[t].big);
+        F(q,t)
+        &#123;
+            if(e[t].fa==v) continue;
+            if(e[t].big==v) continue;
+            dfs2(v);
+        &#125;
+    &#125;
+    void reset(int n,int root)
+    &#123;
+        for(int i=1;i&lt;=n;i++)
+            e[i].num=start[i];
+        e[root].fa=root;
+        e[root].d=1;
+        dfs1(root);
+        dfs2(root);
+    &#125;
+    void change_line(int x,int y,int z)
+    &#123;
+        if(e[e[x].top].d&lt;e[e[y].top].d) swap(x,y);
+        if(e[e[x].top].d==e[e[y].top].d&amp;&amp;e[x].d&lt;e[y].d) swap(x,y);
+        if(e[x].top!=e[y].top)
+        &#123;
+            trees.add(1,e[e[x].top].xh,e[x].xh,z);
+            change_line(e[e[x].top].fa,y,z);
+        &#125;
+        else
+        &#123;
+            trees.add(1,e[y].xh,e[x].xh,z);
+        &#125;
+    &#125;
+    int search_line(int x,int y)
+    &#123;
+        if(e[e[x].top].d&lt;e[e[y].top].d) swap(x,y);
+        if(e[e[x].top].d==e[e[y].top].d&amp;&amp;e[x].d&lt;e[y].d) swap(x,y);
+        if(e[x].top!=e[y].top)
+        &#123;
+            return (trees.ask(1,e[e[x].top].xh,e[x].xh)+
+                   search_line(e[e[x].top].fa,y));
+        &#125;
+        else
+        &#123;
+            return trees.ask(1,e[y].xh,e[x].xh);
+        &#125;
+    &#125;
+    void change_tree(int x,int y)
+    &#123;
+        trees.add(1,e[x].xh,e[x].siz+e[x].xh-1,y);
+    &#125;
+    int search_tree(int x)
+    &#123;
+        return trees.ask(1,e[x].xh,e[x].xh+e[x].siz-1);
+    &#125;
+&#125;;
+</code></pre>
+<p>需要区间和 $sum_x_trees$ 作为前置<br>需要线段树基础的 $x_trees$ 作为前前置</p>
+<p>初始值放入 $start$ 数组<br>在 $lq$ 中放入边(需调用两次建立双向边)<br>使用 $reset$ 初始化(包括两个DFS)</p>
+<hr>
+<h2 id="二维线段树"><a href="#二维线段树" class="headerlink" title="二维线段树"></a>二维线段树</h2><p>基础中的基础</p>
+<pre><code class="cpp">
+struct double_x_tree&#123;
+    struct &#123;
+        int l1,r1,l2,r2;
+        int sum;
+        int lan;
+    &#125;t[2000005];
+    int _a_[2005][2005];
+&#125;;
+</code></pre>
+<p>支持矩阵区间和的修改，查询</p>
+<pre><code class="cpp">struct double_add_x_tree&#123;
+    void build(int k,int x1,int y1,int x2,int y2)
+    &#123;
+        t[k].l1=x1;t[k].r1=y1;
+        t[k].l2=x2;t[k].r2=y2;
+        if(x1==x2&amp;&amp;y1==y2)
+        &#123;
+            t[k].sum=_a_[x1][y1];
+            return;
+        &#125;
+        int midx=x1+x2&gt;&gt;1,midy=y1+y2&gt;&gt;1;
+        if(x1==x2)
+        &#123;
+            build((k&lt;&lt;2)-2+0,x1,y1,x2,midy);
+            build((k&lt;&lt;2)-2+1,x1,midy+1,x2,y2);
+            t[k].sum=t[(k&lt;&lt;2)-2+0].sum+t[(k&lt;&lt;2)-2+1].sum;
+        &#125;
+        else if(y1==y2)
+        &#123;
+            build((k&lt;&lt;2)-2+0,x1,y1,midx,y2);
+            build((k&lt;&lt;2)-2+1,midx+1,y1,x2,y2);
+            t[k].sum=t[(k&lt;&lt;2)-2+0].sum+t[(k&lt;&lt;2)-2+1].sum;
+        &#125;
+        else
+        &#123;
+            build((k&lt;&lt;2)-2+0,x1,y1,midx,midy);
+            build((k&lt;&lt;2)-2+1,midx+1,y1,x2,midy);
+            build((k&lt;&lt;2)-2+2,x1,midy+1,midx,y2);
+            build((k&lt;&lt;2)-2+3,midx+1,midy+1,x2,y2);
+            t[k].sum=t[(k&lt;&lt;2)-2+0].sum+
+                     t[(k&lt;&lt;2)-2+1].sum+
+                     t[(k&lt;&lt;2)-2+2].sum+
+                     t[(k&lt;&lt;2)-2+3].sum;
+        &#125;
+    &#125;
+    void down(int k)
+    &#123;
+        t[(k&lt;&lt;2)-2+0].sum+=t[k].lan*(t[(k&lt;&lt;2)-2+0].l2-t[(k&lt;&lt;2)-2+0].l1+1)*(t[(k&lt;&lt;2)-2+0].r2-t[(k&lt;&lt;2)-2+0].r1+1);
+        t[(k&lt;&lt;2)-2+1].sum+=t[k].lan*(t[(k&lt;&lt;2)-2+1].l2-t[(k&lt;&lt;2)-2+1].l1+1)*(t[(k&lt;&lt;2)-2+1].r2-t[(k&lt;&lt;2)-2+1].r1+1);
+        t[(k&lt;&lt;2)-2+2].sum+=t[k].lan*(t[(k&lt;&lt;2)-2+2].l2-t[(k&lt;&lt;2)-2+2].l1+1)*(t[(k&lt;&lt;2)-2+2].r2-t[(k&lt;&lt;2)-2+2].r1+1);
+        t[(k&lt;&lt;2)-2+3].sum+=t[k].lan*(t[(k&lt;&lt;2)-2+3].l2-t[(k&lt;&lt;2)-2+3].l1+1)*(t[(k&lt;&lt;2)-2+3].r2-t[(k&lt;&lt;2)-2+3].r1+1);
+        t[(k&lt;&lt;2)-2+0].lan+=t[k].lan;
+        t[(k&lt;&lt;2)-2+1].lan+=t[k].lan;
+        t[(k&lt;&lt;2)-2+2].lan+=t[k].lan;
+        t[(k&lt;&lt;2)-2+3].lan+=t[k].lan;
+        t[k].lan=0;
+    &#125;
+    void add(int k,int x1,int y1,int x2,int y2,int z)
+    &#123;
+        if(t[k].l1&gt;x2||t[k].l2&lt;x1||t[k].r1&gt;y2||t[k].r2&lt;y1) return;
+        if(t[k].l1&gt;=x1&amp;&amp;t[k].l2&lt;=x2&amp;&amp;t[k].r1&gt;=y1&amp;&amp;t[k].r2&lt;=y2)
+        &#123;
+            t[k].sum+=z*((t[k].l2-t[k].l1+1)*(t[k].r2-t[k].r1+1));
+        	t[k].lan+=z;
+            return;
+        &#125;
+        down(k);
+        add((k&lt;&lt;2)-2+0,x1,y1,x2,y2,z);
+        add((k&lt;&lt;2)-2+1,x1,y1,x2,y2,z);
+        add((k&lt;&lt;2)-2+2,x1,y1,x2,y2,z);
+        add((k&lt;&lt;2)-2+3,x1,y1,x2,y2,z);
+        t[k].sum=t[(k&lt;&lt;2)-2+0].sum+
+                 t[(k&lt;&lt;2)-2+1].sum+
+                 t[(k&lt;&lt;2)-2+2].sum+
+                 t[(k&lt;&lt;2)-2+3].sum;
+    &#125;
+    int ask(int k,int x1,int y1,int x2,int y2)
+    &#123;
+        if(t[k].l1&gt;x2||t[k].l2&lt;x1||t[k].r1&gt;y2||t[k].r2&lt;y1) return 0;
+        if(t[k].l1&gt;=x1&amp;&amp;t[k].l2&lt;=x2&amp;&amp;t[k].r1&gt;=y1&amp;&amp;t[k].r2&lt;=y2)
+            return t[k].sum;
+        down(k);
+        return ask((k&lt;&lt;2)-2+0,x1,y1,x2,y2)+
+               ask((k&lt;&lt;2)-2+1,x1,y1,x2,y2)+
+               ask((k&lt;&lt;2)-2+2,x1,y1,x2,y2)+
+               ask((k&lt;&lt;2)-2+3,x1,y1,x2,y2);
+    &#125;
+&#125;;
+</code></pre>
+<h2 id="最大流"><a href="#最大流" class="headerlink" title="最大流"></a>最大流</h2><pre><code class="cpp">namespace ISAP&#123;
+    int n,m,s,t;
+    int cur[100005];
+    namespace lsq &#123;
+        typedef int lsqxx;
+        struct lq &#123;
+            struct lqbz &#123;
+                lsqxx v,w,nxt;
+            &#125; e[1000005];
+            lsqxx h[100005],cnt=1;
+            inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+                e[++cnt].v=v;
+                e[cnt].w=w;
+                e[cnt].nxt=h[u];
+                h[u]=cnt;
+            &#125;
+        #define F(z,u) for(int j=cur[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w,cur[u]=j)
+        &#125;q;
+    &#125;;using namespace lsq;
+    int d[205],gap[205];
+    int dfs(int u=s,int in=INT_MAX)
+    &#123;
+        if(u==t) return in;
+        int out=0;
+        F(q,u)
+        &#123;
+            if(d[u]&gt;d[v]&amp;&amp;w)
+            &#123;
+                int nt=dfs(v,min(w,in));
+                in-=nt;out+=nt;
+                q.e[j].w-=nt;q.e[j^1].w+=nt;
+                if(!in) return out;
+            &#125;
+        &#125;
+        --gap[d[u]];
+        if(!gap[d[u]]) d[s]=n+1;
+        ++d[u];
+        ++gap[d[u]];
+        return out;
+    &#125;
+    int ISAP()
+    &#123;
+        int ans=0;
+        gap[0]=n;
+        while(d[s]&lt;n)
+            memcpy(cur,q.h,sizeof(q.h)),ans+=dfs();
+        return ans;
+    &#125;
+&#125;
+using namespace ISAP;
+</code></pre>
+<p>带有当前弧优化和gas优化</p>
+<hr>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><h3 id="输出数组"><a href="#输出数组" class="headerlink" title="输出数组"></a>输出数组</h3><pre><code class="cpp">#define cs(dt,n,m) \
+    for(int i=1;i&lt;=n;i++)\
+    &#123;\
+        for(int j=1;j&lt;=n;j++)\
+            printf(&quot;%d &quot;,dt[i][j]);\
+        cout&lt;&lt;endl;\
+    &#125;
+</code></pre>
+<p>可以输出一个数组矩阵</p>
+<hr>
+<h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><p>可以实现矩阵加法，矩阵乘法，矩阵快速幂</p>
+<pre><code class="cpp">namespace matrixs&#123;
+    int matrixs_mod=2147483647;
+    struct matrix&#123;
+        int a[105][105]=&#123;0&#125;;
+        int n=0,m=0;
+        void in(int x=-1,int y=-1)
+        &#123;
+            if(x==-1) scanf(&quot;%lld&quot;,&amp;x);
+            if(y==-1) scanf(&quot;%lld&quot;,&amp;y);
+            n=x,m=y;
+            f(i,1,n) f(j,1,m) scanf(&quot;%lld&quot;,&amp;a[i][j]);
+        &#125;
+        void out()
+        &#123;
+            f(i,1,n)
+            &#123;
+                f(j,1,m) printf(&quot;%lld &quot;,a[i][j]);
+                putchar(&#39;\n&#39;);
+            &#125;
+        &#125;
+    &#125;;
+    matrix operator +(matrix x,matrix y)
+    &#123;
+        matrix ans=&#123;0&#125;;ans.n=x.n;ans.m=x.m;
+        f(i,1,ans.n) f(j,1,ans.m) ans.a[i][j]=x.a[i][j]+y.a[i][j];
+        return ans;
+    &#125;
+    matrix operator *(matrix x,matrix y)
+    &#123;
+        matrix ans=&#123;0&#125;;memset(ans.a,0,sizeof(ans.a));
+        ans.n=x.n;ans.m=y.m;
+        f(i,1,ans.n) f(j,1,ans.m) f(k,1,x.m) ans.a[i][j]+=x.a[i][k]*y.a[k][j],ans.a[i][j]%=matrixs_mod;
+        return ans;
+    &#125;
+    matrix one(int n)
+    &#123;
+        matrix ans=&#123;0&#125;;memset(ans.a,0,sizeof(ans.a));
+        ans.n=ans.m=n;
+        f(i,1,n) ans.a[i][i]=1;
+        return ans;
+    &#125;
+    matrix power(matrix x,int k)
+    &#123;
+        matrix ans=one(x.n);
+        while(k)
+        &#123;
+            if(k&amp;1) ans=ans*x;
+            x=x*x;k&gt;&gt;=1;
+        &#125;
+        return ans;
+    &#125;
+&#125;;
+using namespace matrixs;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 wxh666
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;wxh666
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
+        
+    </body>
+</html>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>

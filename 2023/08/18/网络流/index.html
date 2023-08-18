@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>网络流 | wxh666</title>
+        <meta name="author" content="wxh666" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/an.webp" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>WXH666</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WXH666</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>网络流</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">图论</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><a target="_blank" rel="noopener" href="https://oi-wiki.org//graph/flow/max-flow/">OI Wiki</a><br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3376">P3376 网络最大流</a><br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P3376">P3376 网络最大流题解</a><br>本质就是求增广路的问题<br>求到无增广路时得到最大流<br>ps.增广路是指从s到t的一条路，流过这条路，使得当前的流（可以到达t的水量）可以增加。</p>
+<p>网络流可以用来求解<strong>二分图最大匹配</strong></p>
+<h1 id="错误代码示范"><a href="#错误代码示范" class="headerlink" title="错误代码示范"></a>错误代码示范</h1><p><del>自写废物深搜代码，喜获37pts</del></p>
+<pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+typedef int lsqxx;
+struct lq&#123;
+    lsqxx v,w,nxt;
+&#125;e[10005];
+lsqxx h[205],cnt=1;
+void add(lsqxx u,lsqxx v,lsqxx w)
+&#123;
+    e[++cnt].v=v;e[cnt].w=w;e[cnt].nxt=h[u];h[u]=cnt;
+&#125;
+int n,m,s,td;
+int x,y,z;
+int ans;
+int vis[205];
+int dfs(int t,int cnt)
+&#123;
+    if(t==td)
+    &#123;
+        ans+=cnt;
+        return cnt;
+    &#125;
+    int flag=0;
+    for(int i=h[t];i;i=e[i].nxt)
+    &#123;
+        int v=e[i].v,w=e[i].w;
+        if(vis[v]) continue;
+        if(w&lt;=0) continue;
+        if(cnt==flag) break;
+        vis[v]=1;
+        int re=dfs(v,min(cnt-flag,w));
+        e[i].w-=re;
+        e[i^1].w+=re;
+        flag+=re;
+        vis[v]=0;
+    &#125;
+    if(t==s)
+        cout&lt;&lt;flag;
+    return flag;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;td;
+    vis[s]=1;
+    for(int i=1;i&lt;=m;i++)
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z),
+        add(x,y,z),add(y,x,0);
+    dfs(s,0x7f7f7f7f);
+    return 0;
+&#125;
+</code></pre>
+<h3 id="超时原因1"><a href="#超时原因1" class="headerlink" title="超时原因1"></a>超时原因1</h3><p>RT.<br><img src="/photo/wll.png" alt="img"><br>如果搜的是 s-&gt;a-&gt;b-&gt;t 与 s-&gt;b-&gt;a-&gt;t 这两条边，就要搜<strong>两百次</strong>才能找到最大流<br>而运气好只要搜两次就能找到 ^rs</p>
+<h1 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h1><p>如何使的搜的次数更小呢<br>引入<strong>EK算法</strong><br><strong>不使用深搜而采用广搜来找增广路</strong><br>每次选取从源点到汇点最少边的增广路<br>直到选不到为止</p>
+<p>复杂度 $O(nm^2)$ ~~明显适合稀疏图，但 $m$ 通常大于 $n$ ~~</p>
+<h2 id="正确代码"><a href="#正确代码" class="headerlink" title="正确代码"></a>正确代码</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+typedef int lsqxx;
+struct lq&#123;
+    lsqxx v,w,nxt;
+&#125;e[10005];
+lsqxx h[205],cnt=1;
+void add(int u,int v,int w)
+&#123;
+    e[++cnt].v=v;e[cnt].w=w;e[cnt].nxt=h[u];h[u]=cnt;
+&#125;
+int n,m,s,td;
+int x,y,z;
+int dis[205],vis[205],mis[205];
+int bfs(int s,int td)
+&#123;
+    queue&lt;int&gt;q;
+    q.push(s);
+    memset(dis,0,sizeof(dis));//存路径
+    memset(vis,0,sizeof(vis));//找路径上最小边 
+    memset(mis,0,sizeof(mis));//存cnt 
+    vis[s]=0x7f7f7f7f;
+    while(!q.empty())
+    &#123;
+        int t=q.front();q.pop();
+        for(int i=h[t];i;i=e[i].nxt)
+        &#123;
+            int v=e[i].v,w=e[i].w;
+            if(dis[v]) continue;
+            if(w&lt;=0) continue;
+            dis[v]=t;
+            vis[v]=min(vis[t],w);
+            mis[v]=i;
+            q.push(v);
+            if(v==td)
+                return vis[td];
+        &#125;
+    &#125;
+    return -1;
+&#125;
+void dfs(int t,int to)
+&#123;
+    if(t==s) return;
+    e[mis[t]].w-=to;
+    e[mis[t]^1].w+=to;
+    dfs(dis[t],to);
+&#125;
+int EK(int s,int t) 
+&#123;
+    int ans=0;
+    while(1)
+    &#123;
+        int cnt=bfs(s,t);
+        if(cnt==-1) break;
+        ans+=cnt;
+        dfs(t,cnt);
+    &#125;
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;td;
+    for(int i=1;i&lt;=m;i++)
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z),add(x,y,z),add(y,x,0);
+    cout&lt;&lt;EK(s,td);
+    return 0;
+&#125;
+</code></pre>
+<h1 id="ISAP"><a href="#ISAP" class="headerlink" title="ISAP"></a>ISAP</h1><p>引入<strong>高度</strong>的概念<br>对于每一个点，开始的高度为 $0$ ，每个节点只能向高度比它低的节点流出，<strong>汇点高度固定为 $0$</strong><br>每当流入的流量大于流出的流量，即由这个点无法流出，高度 $+1$<br>当源点的高度大于等于 $n$ 时，得到最大流，输出即可</p>
+<p>纯代码，不带优化</p>
+<pre><code class="cpp">//ISAP
+#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt=1;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;q;
+&#125;;
+using namespace lsq;
+int n,m,s,t;
+int x,y,z;
+int d[205];
+int dfs(int u=s,int in=INT_MAX)
+&#123;
+    if(u==t) return in;
+    int out=0;
+    F(q,u)
+    &#123;
+        if(d[u]&gt;d[v]&amp;&amp;w)
+        &#123;
+            int nt=dfs(v,min(w,in));
+            in-=nt;out+=nt;
+            q.e[j].w-=nt;q.e[j^1].w+=nt;
+            if(!in) return out;
+        &#125;
+    &#125;
+    ++d[u];
+    return out;
+&#125;
+int ISAP()
+&#123;
+    int ans=0;
+    while(d[s]&lt;n)
+        ans+=dfs();
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+        if(x==y) continue;
+        q.add(x,y,z),q.add(y,x,0);
+    &#125;
+    cout&lt;&lt;ISAP();
+    return 0;
+&#125;
+</code></pre>
+<p>$BFS$ 优化</p>
+<pre><code class="cpp">//ISAP
+#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt=1;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;q,p;
+&#125;;using namespace lsq;
+int n,m,s,t;
+int x,y,z;
+int d[205];
+void BFS()
+&#123;
+    memset(d,-1,sizeof(d));
+    queue&lt;int&gt;r;
+    r.push(t);
+    d[t]=0;
+    while(!r.empty())
+    &#123;
+        int cht=r.front();r.pop();
+        F(p,cht)
+        &#123;
+            if(d[v]!=-1) continue;
+            d[v]=d[cht]+1;
+            r.push(v);
+        &#125;
+    &#125;
+&#125;
+int dfs(int u=s,int in=INT_MAX)
+&#123;
+    if(u==t) return in;
+    int out=0;
+    F(q,u)
+    &#123;
+        if(d[u]&gt;d[v]&amp;&amp;w)
+        &#123;
+            int nt=dfs(v,min(w,in));
+            in-=nt;out+=nt;
+            q.e[j].w-=nt;q.e[j^1].w+=nt;
+            if(!in) return out;
+        &#125;
+    &#125;
+    ++d[u];
+    return out;
+&#125;
+int ISAP()
+&#123;
+    int ans=0;
+    BFS();
+    while(d[s]&lt;n)
+        ans+=dfs();
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int _=scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+        if(x==y) continue;
+        q.add(x,y,z),q.add(y,x,0),p.add(y,x,z);
+    &#125;
+    cout&lt;&lt;ISAP();
+    return 0;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 wxh666
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;wxh666
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
+        
+    </body>
+</html>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>

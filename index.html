@@ -1,0 +1,1165 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>wxh666</title>
+        <meta name="author" content="wxh666" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/an.webp" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>WXH666</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WXH666</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-images="/images/background.jpg,/images/an_dg.jpg,/images/ans.png,/images/dq.jpeg,/images/ld.jpg,/images/lf.jpg,/images/ly.jpeg,/images/md.jpeg,/images/wy.png"></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>wxh666</h1>
+                <h3>wuhu~</h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+</div>
+<div id="home-posts-wrap" true ref="homePostsWrap">
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/2023/08/18/%E3%80%8E%E5%BC%80%E6%91%86%E5%90%91%E3%80%8F%E5%B0%81%E8%A3%85%E4%B8%87%E7%89%A9/">
+        <h2 class="post-title">『开摆向』封装万物</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+        <span class="special">
+            <i class="fa-solid fa-grip-vertical fa-fw"></i>
+        </span>
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>为了<del>节省写数据结构的时间</del><br>方便建立多个相同的数据结构<del>其实不单单是数据结构</del>，准备把许多数据结构用结构体封装一下来用</p>
+<hr>
+<h1 id="链式前向星"><a href="#链式前向星" class="headerlink" title="链式前向星"></a>链式前向星</h1><pre><code class="cpp">namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+        void erase() &#123;cnt=0;memset(h,0,sizeof(h));return;&#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;;
+&#125;;
+</code></pre>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/others/" style="color: #ff7d73">others</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/18/%E3%80%8E%E5%BC%80%E6%91%86%E5%90%91%E3%80%8F%E5%B0%81%E8%A3%85%E4%B8%87%E7%89%A9/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/18/P8843-%E8%90%9D%E5%8D%9C%E6%95%B0%E6%8D%AE%E5%BA%93/">
+        <h2 class="post-title">P8843_萝卜数据库</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>这一题其实只要用两个数组就可以解决。</p>
+<h2 id="题意简述"><a href="#题意简述" class="headerlink" title="题意简述"></a>题意简述</h2><p>类似于 map 内有一个数组。</p>
+<p>每一次输入给出字段的名字 $p$ 和存储的数值 $x_i$。</p>
+<p>同一个字段可以拥有很多个存储的值。</p>
+<p>每一次查询查找在名字为 $x$ 的字段中在 $[y_{\min},y_{\max}]$ 之间的值有多少个。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>按题意进行模拟，类似于链式前向星的方法。</p>
+<p>我们可以定义两个数组 $a$,$b$。</p>
+<p>数组值的下标 $i$ 代表第 $i$ 个输入的值。</p>
+<p>$a_i,b_i$ 分别代表这个输入的字段名和值。</p>
+<p>每次输入把名字放到 $a$ 数组里面，值放到 $b$ 数组里面。</p>
+<p>然后每次输出就遍历一遍数组，找出字段名与值符合的数据的数量就可以了。</p>
+<p>由于数据范围比较小，所以暴力写能过。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n,k;
+int cz,x,y,c;
+int a[100005],b[100005],cnt;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;k;
+    while(n--)
+    &#123;
+        scanf(&quot;%d&quot;,&amp;cz);
+        if(cz==1)
+        &#123;
+            scanf(&quot;%d&quot;,&amp;c);
+            for(int i=1;i&lt;=c;i++)
+                scanf(&quot;%d%d&quot;,&amp;x,&amp;y),a[++cnt]=x,b[cnt]=y;
+        &#125;
+        if(cz==2)
+        &#123;
+            int ans=0;
+            scanf(&quot;%d&quot;,&amp;c);
+            scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+            for(int i=1;i&lt;=cnt;i++)
+                if(b[i]&gt;=x&amp;&amp;b[i]&lt;=y&amp;&amp;a[i]==c)
+                    ans++;
+            printf(&quot;%d\n&quot;,ans);
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%A2%98%E8%A7%A3/" style="color: #ffa2c4">题解</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/18/P8843-%E8%90%9D%E5%8D%9C%E6%95%B0%E6%8D%AE%E5%BA%93/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/18/CF1209F-Koala-and-Notebook/">
+        <h2 class="post-title">CF1209F_Koala_and_Notebook</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>这题细节很多，但是思路还是很好想的。</p>
+<p>考虑贪心，先考虑 $m&lt;10$ 的情况。</p>
+<p>肯定是优先走经过边最少的情况。</p>
+<p>经过边相同在按小到大排序。</p>
+<p>就可以规避调 $mod$ 之后无法判断大小的的问题。</p>
+<hr>
+<p>拓展到 $m&gt;10$ 的情况。</p>
+<p>可以考虑把一条大于 $10$ 的边 $w$ 拆成 $\lg_{}{(w+1)}$ 个边，而且由于是双向边，所以每个边与其对应的反边可能不会相同，例如一条边 $10$ 会被拆成边 $1,0$ 与边 $0,1$，再使用 BFS 进行搜索。</p>
+<p>但是，可能会出现如下图所示的情况：<br><img src="https://cdn.luogu.com.cn/upload/image_hosting/fm43gn5m.png"></p>
+<p>从点 $1$ 开始遍历，如果按照点 $2$ 先遍历的顺序，点 $4$ 会先被点 $2$ 更新为 $11$ 而得不到正确的答案 $10$。</p>
+<p>因此，我们需要进行分布 BFS，把目前所有到起点距离相等的点放在一起处理，按照这些点的所有出边的边权从小到大排序，就能得到正确的答案。</p>
+<p>代码：</p>
+<pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+const int mod=1e9+7;
+struct wxh&#123;
+    int v,w;
+&#125;;
+vector&lt;wxh&gt;q[2000005];
+int dcnt;
+int n,m;
+int x,y;
+int dis[2000005];
+int vis[2000005];
+struct wxh666&#123;
+    int u,v,w;
+    bool operator &lt;(wxh666 x)const
+    &#123;
+        return w&gt;x.w;
+    &#125;
+&#125;;
+void BFS()
+&#123;
+    queue&lt;vector&lt;int&gt; &gt;p;
+    p.push(&#123;1&#125;);vis[1]=1;
+    while(!p.empty())
+    &#123;
+        priority_queue&lt;wxh666&gt;to;
+        vector&lt;int&gt;k;
+        vector&lt;int&gt;in;
+        k=p.front();p.pop();
+        for(auto i:k)
+            for(auto j:q[i])
+                if(!vis[j.v])
+                    to.push(wxh666&#123;i,j.v,j.w&#125;);
+        int g=0;
+        if(!to.empty())
+            g=to.top().w;
+        while(!to.empty())
+        &#123;
+            wxh666 w=to.top();to.pop();
+            if(vis[w.v]) continue;
+            if(g!=w.w)
+            &#123;
+                if(!in.empty())
+                    p.push(in);
+                in.clear();
+                g=w.w;
+            &#125;
+            vis[w.v]=1;
+            dis[w.v]=(dis[w.u]*10+w.w)%mod;
+            in.push_back(w.v);
+        &#125;
+        if(!in.empty())
+            p.push(in);
+        in.clear();
+    &#125;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m;
+    dcnt=n;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        scanf(&quot;%d%d&quot;,&amp;x,&amp;y);
+        stack&lt;int&gt;s;
+        queue&lt;int&gt;sq;
+        int _=i;
+        while(_) s.push(_%10),sq.push(_%10),_/=10;//拆边
+        if(s.size()==1)
+        &#123;
+            q[x].push_back(wxh&#123;y,i&#125;);
+            q[y].push_back(wxh&#123;x,i&#125;);
+        &#125;
+        else
+        &#123;
+            q[x].push_back(wxh&#123;++dcnt,s.top()&#125;);
+            q[dcnt].push_back(wxh&#123;x,sq.front()&#125;);
+            s.pop();sq.pop();
+            while(s.size()&gt;1)
+            &#123;
+                q[dcnt].push_back(wxh&#123;dcnt+1,s.top()&#125;);
+                q[dcnt+1].push_back(wxh&#123;dcnt,sq.front()&#125;);
+                dcnt++;s.pop();sq.pop();
+            &#125;
+            q[y].push_back(wxh&#123;dcnt,sq.front()&#125;);
+            q[dcnt].push_back(wxh&#123;y,s.top()&#125;);
+            ++dcnt;s.pop();sq.pop();
+        &#125;
+    &#125;
+    for(int i=1;i&lt;=dcnt;i++)
+        sort(q[i].begin(),q[i].end(),[&amp;](auto x,auto y)&#123;return x.w&lt;y.w;&#125;);
+    BFS();
+    for(int i=2;i&lt;=n;i++)
+        printf(&quot;%d\n&quot;,dis[i]);
+    return 0;
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">图论</a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E9%A2%98%E8%A7%A3/" style="color: #ff7d73">题解</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/18/CF1209F-Koala-and-Notebook/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/18/particleX-readme/">
+        <h2 class="post-title">particleX_readme</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="Hexo-Theme-ParticleX"><a href="#Hexo-Theme-ParticleX" class="headerlink" title="Hexo-Theme-ParticleX"></a>Hexo-Theme-ParticleX</h1><p><a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX</a> 主题，诞生原因是因为原来的 <a target="_blank" rel="noopener" href="https://github.com/korilin/hexo-theme-particle">Particle</a> 主题不维护了，但是我觉得还是很好的。</p>
+<p>原来用的是 Vue 2 + Ant Design Vue 1，现更新到 Vue 3，去除 Ant Design Vue 采用自定义样式，图标更改为 Font Awesome 6，CDN 改为 Staticfile。</p>
+<p>原项目 <code>README.md</code> 里说：</p>
+<blockquote>
+<p>目前有 Full、Night 和 Maiden <strong>两个</strong>主题样式。</p>
+</blockquote>
+<p>但是更改后只有一种了，如果你想改颜色就在 <code>main.css</code> 里替换吧。</p>
+<h1 id="1-演示"><a href="#1-演示" class="headerlink" title="1. 演示"></a>1. 演示</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://argvchs.github.io/">GitHub Pages</a></li>
+<li><a target="_blank" rel="noopener" href="https://argvchs.netlify.app/">Netlify</a></li>
+<li><a target="_blank" rel="noopener" href="https://argvchs.vercel.app/">Vercel</a></li>
+</ul>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h1><pre><code class="bash">cd themes
+git clone https://github.com/theme-particlex/hexo-theme-particlex.git particlex --depth=1
+</code></pre>
+<p>然后在根目录 <code>_config.yml</code> 设置主题为 ParticleX 即可。</p>
+<pre><code class="yaml">theme: particlex
+</code></pre>
+<h2 id="2-1-关闭自带代码高亮"><a href="#2-1-关闭自带代码高亮" class="headerlink" title="2.1. 关闭自带代码高亮"></a>2.1. 关闭自带代码高亮</h2><p>Hexo 有自带的代码高亮，但是和 ParticleX 的不兼容。</p>
+<pre><code class="yaml">highlight:
+    enable: false
+prismjs:
+    enable: false
+</code></pre>
+<p>如果使用 Pandoc 还需要设置一下：</p>
+<pre><code class="yaml">pandoc:
+    extra:
+        - no-highlight:
+</code></pre>
+<h2 id="2-2-禁用年度月度归档"><a href="#2-2-禁用年度月度归档" class="headerlink" title="2.2. 禁用年度月度归档"></a>2.2. 禁用年度月度归档</h2><p>Hexo 会自动生成年度月度归档，可是 ParticleX 主题没有这个功能。<del>我太懒了</del></p>
+<pre><code class="yaml">archive_generator:
+    enabled: true
+    per_page: 0
+    yearly: false
+    monthly: false
+    daily: false
+</code></pre>
+<p>修改完请 <code>hexo cl</code> 清除缓存。</p>
+<h1 id="3-配置"><a href="#3-配置" class="headerlink" title="3. 配置"></a>3. 配置</h1><h2 id="3-1-基本配置"><a href="#3-1-基本配置" class="headerlink" title="3.1. 基本配置"></a>3.1. 基本配置</h2><p><code>background</code> 参数是一个列表，打开时会随机加载一个背景。</p>
+<pre><code class="yaml"># Avatar image
+avatar: /images/avatar.jpg
+
+# Favicon
+favicon: /images/favicon.png
+
+# Home page background image
+background:
+    - /images/background.jpg
+
+# Loading image
+loading: /images/loading.gif
+
+# Optional colors for category and tag
+colors:
+    - &quot;#ffa2c4&quot;
+    - &quot;#00bcd4&quot;
+    - &quot;#03a9f4&quot;
+    - &quot;#00a596&quot;
+    - &quot;#ff7d73&quot;
+</code></pre>
+<h2 id="3-2-内容配置"><a href="#3-2-内容配置" class="headerlink" title="3.2. 内容配置"></a>3.2. 内容配置</h2><h3 id="3-2-1-导航栏"><a href="#3-2-1-导航栏" class="headerlink" title="3.2.1. 导航栏"></a>3.2.1. 导航栏</h3><p>为了方便，主题使用的图标是 Font Awesome 6 图标。</p>
+<pre><code class="yaml"># ParticleX theme icon is adopts the Font Awesome 6
+# https://fontawesome.com
+
+# Main menu navigation
+menu:
+    Home:
+        name: house
+        theme: solid
+        link: /
+    About:
+        name: id-card
+        theme: solid
+        link: /about
+    Archives:
+        name: box-archive
+        theme: solid
+        link: /archives
+    Categories:
+        name: bookmark
+        theme: solid
+        link: /categories
+    Tags:
+        name: tags
+        theme: solid
+        link: /tags
+</code></pre>
+<h3 id="3-2-2-主页信息卡片"><a href="#3-2-2-主页信息卡片" class="headerlink" title="3.2.2. 主页信息卡片"></a>3.2.2. 主页信息卡片</h3><p><code>description</code> 支持 Markdown 格式。</p>
+<p>图标链接 <code>iconLinks</code> 配置和导航栏配置相同。</p>
+<pre><code class="yaml"># Side info card
+card:
+    enable: true
+    description: |
+        Description
+        ...
+    iconLinks:
+    friendLinks:
+        Argvchs: https://argvchs.github.io
+</code></pre>
+<h3 id="3-2-3-页脚"><a href="#3-2-3-页脚" class="headerlink" title="3.2.3. 页脚"></a>3.2.3. 页脚</h3><p>考虑到博客部署在服务器并使用自己域名的情况，按规定需要在网站下边添加备案消息。</p>
+<p>如没有需要显示备案消息的可以关闭。</p>
+<pre><code class="yaml"># Footer info
+footer:
+    since: 2022
+    # Customize the server domain name ICP
+    ICP:
+        enable: false
+        code:
+        link:
+</code></pre>
+<h2 id="3-3-功能配置"><a href="#3-3-功能配置" class="headerlink" title="3.3. 功能配置"></a>3.3. 功能配置</h2><h3 id="3-3-1-Polyfill"><a href="#3-3-1-Polyfill" class="headerlink" title="3.3.1. Polyfill"></a>3.3.1. Polyfill</h3><p>使用 <a target="_blank" rel="noopener" href="https://polyfill.io/">Polyfill.io</a> 自动根据 UA 处理新的 JS API 兼容。</p>
+<p>可以配合 <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-babel">Hexo-Babel</a> 插件处理 JS 语法兼容。</p>
+<pre><code class="yaml"># Polyfill
+# https://polyfill.io
+polyfill:
+    enable: true
+    features:
+        - default
+</code></pre>
+<h3 id="3-3-2-代码高亮"><a href="#3-3-2-代码高亮" class="headerlink" title="3.3.2. 代码高亮"></a>3.3.2. 代码高亮</h3><p>使用 Highlight.js 代码高亮。</p>
+<p>样式可以在<a target="_blank" rel="noopener" href="https://highlightjs.org/static/demo">这里</a>选择，默认为 GitHub。</p>
+<pre><code class="yaml"># Highlight.js
+# https://highlightjs.org
+highlight:
+    enable: true
+    style: github
+</code></pre>
+<h3 id="3-3-3-数学渲染"><a href="#3-3-3-数学渲染" class="headerlink" title="3.3.3. 数学渲染"></a>3.3.3. 数学渲染</h3><p>使用 KaTeX 渲染数学公式。</p>
+<pre><code class="yaml"># KaTeX math rendering
+math:
+    enable: false
+</code></pre>
+<h3 id="3-3-4-图片预览"><a href="#3-3-4-图片预览" class="headerlink" title="3.3.4. 图片预览"></a>3.3.4. 图片预览</h3><p>简单的点击图片放大缩小的预览。</p>
+<pre><code class="yaml"># Image preview
+preview:
+    enable: true
+</code></pre>
+<h3 id="3-3-5-文章缩略"><a href="#3-3-5-文章缩略" class="headerlink" title="3.3.5. 文章缩略"></a>3.3.5. 文章缩略</h3><p>一般来说，缩略展示文档只需要在文档中添加 <code>&lt;!-- more --&gt;</code> 即可，缩略内容在显示全文中也会出现。</p>
+<p>但考虑到不想把缩略内容放在正文里，就添加了此参数，在 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">Front-Matter</a> 里设置。</p>
+<p>支持 Markdown 格式。</p>
+<pre><code class="yaml">description: |
+    Normal _Italic_ **Strong**
+</code></pre>
+<h3 id="3-3-6-文章置顶"><a href="#3-3-6-文章置顶" class="headerlink" title="3.3.6. 文章置顶"></a>3.3.6. 文章置顶</h3><p>在 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">Front-Matter</a> 里设置 <code>pinned</code> 作为置顶参数，越大越靠前，默认为 0。</p>
+<h3 id="3-3-7-文章加密"><a href="#3-3-7-文章加密" class="headerlink" title="3.3.7. 文章加密"></a>3.3.7. 文章加密</h3><p>使用 AES 加密算法，在 <a target="_blank" rel="noopener" href="https://hexo.io/docs/front-matter">Front-Matter</a> 里设置 <code>secret</code> 作为密码，**使用请安装插件 <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-helper-crypto">Hexo-Helper-Crypto</a>**。</p>
+<pre><code class="yaml"># Article encryption
+crypto:
+    enable: false
+</code></pre>
+<h3 id="3-3-8-搜索"><a href="#3-3-8-搜索" class="headerlink" title="3.3.8. 搜索"></a>3.3.8. 搜索</h3><p>嵌入到 Archives 中的搜索。</p>
+<p>目前只支持搜索文档标题。</p>
+<pre><code class="yaml"># Search
+search:
+    enable: false
+</code></pre>
+<h2 id="3-4-评论配置"><a href="#3-4-评论配置" class="headerlink" title="3.4. 评论配置"></a>3.4. 评论配置</h2><h3 id="3-4-1-Giscus"><a href="#3-4-1-Giscus" class="headerlink" title="3.4.1. Giscus"></a>3.4.1. Giscus</h3><p>Giscus 是一个由 GitHub Discussions 支持的评论系统。</p>
+<p>在 <a target="_blank" rel="noopener" href="https://giscus.app/">Giscus.app</a> 设置好各项后，会在下面生成一个 <code>&lt;script&gt;</code> 标签，在主题内填入即可。</p>
+<pre><code class="yaml"># Giscus
+# https://github.com/giscus/giscus
+giscus:
+    enable: false
+    src: https://giscus.app/client.js
+    repo:
+    repoID:
+    category:
+    categoryID:
+    mapping: pathname
+    strict: 0
+    reactionsEnabled: 1
+    emitMetadata: 0
+    inputPosition: bottom
+    theme: preferred_color_scheme
+    lang:
+</code></pre>
+<h3 id="3-4-2-Gitalk"><a href="#3-4-2-Gitalk" class="headerlink" title="3.4.2. Gitalk"></a>3.4.2. Gitalk</h3><p>Gitalk 是一个基于 GitHub Issue 和 Preact 的评论系统。</p>
+<p>由于 Gitalk 官方 CORS 代理用的是 Cloudflare，速度过慢，搭建 CORS 代理可以看<a target="_blank" rel="noopener" href="https://argvchs.github.io/2022/07/04/build-cors-anywhere">这篇文章</a>。</p>
+<pre><code class="yaml"># Gitalk
+# https://github.com/gitalk/gitalk
+gitalk:
+    enable: false
+    clientID: # Default ClientID
+    clientSecret: # Default ClientSecret
+    repo: # The name of repository of store comments
+    owner: # GitHub repo owner
+    admin: # GitHub repo owner and collaborators, only these guys can initialize github issues
+    language: # en, zh-CN, zh-TW, es-ES, fr, ru, de, pl and ko are currently available
+    proxy: # CORS proxy
+</code></pre>
+<h3 id="3-4-3-Waline"><a href="#3-4-3-Waline" class="headerlink" title="3.4.3. Waline"></a>3.4.3. Waline</h3><p>Waline 是一个简单、安全的评论系统。</p>
+<p>详见：<a target="_blank" rel="noopener" href="https://blog.yuzi.dev/posts/bcb4ff00.html">在 ParticleX 上使用 Waline | Yuzi’s Blog</a></p>
+<pre><code class="yaml"># Waline
+# https://github.com/walinejs/waline
+waline:
+    enable: false
+    serverURL: # Waline server address url, you should set this to your own link
+    locale: # Locale: https://waline.js.org/guide/client/i18n.html#locale-option
+    commentCount: true # If false, comment count will only be displayed in post page, not in home page
+    pageview: false # Pageviews count, Note: You should not enable both `waline.pageview` and `leancloud_visitors`
+    emoji: # Custom emoji
+        - https://unpkg.com/@waline/emojis@1.2.0/weibo
+        - https://unpkg.com/@waline/emojis@1.2.0/alus
+        - https://unpkg.com/@waline/emojis@1.2.0/bilibili
+        - https://unpkg.com/@waline/emojis@1.2.0/qq
+        - https://unpkg.com/@waline/emojis@1.2.0/tieba
+        - https://unpkg.com/@waline/emojis@1.2.0/tw-emoji
+    meta: # Comment information, valid meta are nick, mail and link
+        - nick
+        - mail
+        - link
+    requiredMeta: # Set required meta field, e.g.: [nick] | [nick, mail]
+        - nick
+    lang: # Language, available values: en-US, zh-CN, zh-TW, pt-BR, ru-RU, jp-JP
+    wordLimit: 0 # Word limit, no limit when setting to 0
+    login: enable # Whether enable login, can choose from &#39;enable&#39;, &#39;disable&#39; and &#39;force&#39;
+    pageSize: 10 # Comment per page
+</code></pre>
+<h3 id="3-4-4-Twikoo"><a href="#3-4-4-Twikoo" class="headerlink" title="3.4.4. Twikoo"></a>3.4.4. Twikoo</h3><p>Twikoo 是一个一个简洁、安全、免费的静态网站评论系统。</p>
+<pre><code class="yaml"># Twikoo
+# https://github.com/imaegoo/twikoo
+twikoo:
+    enable: false
+    envID:
+    region:
+    path: location.pathname
+    lang:
+</code></pre>
+<h1 id="4-写在最后"><a href="#4-写在最后" class="headerlink" title="4. 写在最后"></a>4. 写在最后</h1><p>本项目采用 MIT 开源许可证，欢迎大家贡献，你可以随意打开一个 Issue 来进行提问，有任何改进想法都可以进行 Fork，期待您的 Pull Request！</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/2023/08/18/particleX-readme/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/08/18/%E7%BD%91%E7%BB%9C%E6%B5%81/">
+        <h2 class="post-title">网络流</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/18
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p><a target="_blank" rel="noopener" href="https://oi-wiki.org//graph/flow/max-flow/">OI Wiki</a><br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3376">P3376 网络最大流</a><br><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/solution/P3376">P3376 网络最大流题解</a><br>本质就是求增广路的问题<br>求到无增广路时得到最大流<br>ps.增广路是指从s到t的一条路，流过这条路，使得当前的流（可以到达t的水量）可以增加。</p>
+<p>网络流可以用来求解<strong>二分图最大匹配</strong></p>
+<h1 id="错误代码示范"><a href="#错误代码示范" class="headerlink" title="错误代码示范"></a>错误代码示范</h1><p><del>自写废物深搜代码，喜获37pts</del></p>
+<pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+typedef int lsqxx;
+struct lq&#123;
+    lsqxx v,w,nxt;
+&#125;e[10005];
+lsqxx h[205],cnt=1;
+void add(lsqxx u,lsqxx v,lsqxx w)
+&#123;
+    e[++cnt].v=v;e[cnt].w=w;e[cnt].nxt=h[u];h[u]=cnt;
+&#125;
+int n,m,s,td;
+int x,y,z;
+int ans;
+int vis[205];
+int dfs(int t,int cnt)
+&#123;
+    if(t==td)
+    &#123;
+        ans+=cnt;
+        return cnt;
+    &#125;
+    int flag=0;
+    for(int i=h[t];i;i=e[i].nxt)
+    &#123;
+        int v=e[i].v,w=e[i].w;
+        if(vis[v]) continue;
+        if(w&lt;=0) continue;
+        if(cnt==flag) break;
+        vis[v]=1;
+        int re=dfs(v,min(cnt-flag,w));
+        e[i].w-=re;
+        e[i^1].w+=re;
+        flag+=re;
+        vis[v]=0;
+    &#125;
+    if(t==s)
+        cout&lt;&lt;flag;
+    return flag;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;td;
+    vis[s]=1;
+    for(int i=1;i&lt;=m;i++)
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z),
+        add(x,y,z),add(y,x,0);
+    dfs(s,0x7f7f7f7f);
+    return 0;
+&#125;
+</code></pre>
+<h3 id="超时原因1"><a href="#超时原因1" class="headerlink" title="超时原因1"></a>超时原因1</h3><p>RT.<br><img src="/photo/wll.png" alt="img"><br>如果搜的是 s-&gt;a-&gt;b-&gt;t 与 s-&gt;b-&gt;a-&gt;t 这两条边，就要搜<strong>两百次</strong>才能找到最大流<br>而运气好只要搜两次就能找到 ^rs</p>
+<h1 id="EK算法"><a href="#EK算法" class="headerlink" title="EK算法"></a>EK算法</h1><p>如何使的搜的次数更小呢<br>引入<strong>EK算法</strong><br><strong>不使用深搜而采用广搜来找增广路</strong><br>每次选取从源点到汇点最少边的增广路<br>直到选不到为止</p>
+<p>复杂度 $O(nm^2)$ ~~明显适合稀疏图，但 $m$ 通常大于 $n$ ~~</p>
+<h2 id="正确代码"><a href="#正确代码" class="headerlink" title="正确代码"></a>正确代码</h2><pre><code class="cpp">#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+typedef int lsqxx;
+struct lq&#123;
+    lsqxx v,w,nxt;
+&#125;e[10005];
+lsqxx h[205],cnt=1;
+void add(int u,int v,int w)
+&#123;
+    e[++cnt].v=v;e[cnt].w=w;e[cnt].nxt=h[u];h[u]=cnt;
+&#125;
+int n,m,s,td;
+int x,y,z;
+int dis[205],vis[205],mis[205];
+int bfs(int s,int td)
+&#123;
+    queue&lt;int&gt;q;
+    q.push(s);
+    memset(dis,0,sizeof(dis));//存路径
+    memset(vis,0,sizeof(vis));//找路径上最小边 
+    memset(mis,0,sizeof(mis));//存cnt 
+    vis[s]=0x7f7f7f7f;
+    while(!q.empty())
+    &#123;
+        int t=q.front();q.pop();
+        for(int i=h[t];i;i=e[i].nxt)
+        &#123;
+            int v=e[i].v,w=e[i].w;
+            if(dis[v]) continue;
+            if(w&lt;=0) continue;
+            dis[v]=t;
+            vis[v]=min(vis[t],w);
+            mis[v]=i;
+            q.push(v);
+            if(v==td)
+                return vis[td];
+        &#125;
+    &#125;
+    return -1;
+&#125;
+void dfs(int t,int to)
+&#123;
+    if(t==s) return;
+    e[mis[t]].w-=to;
+    e[mis[t]^1].w+=to;
+    dfs(dis[t],to);
+&#125;
+int EK(int s,int t) 
+&#123;
+    int ans=0;
+    while(1)
+    &#123;
+        int cnt=bfs(s,t);
+        if(cnt==-1) break;
+        ans+=cnt;
+        dfs(t,cnt);
+    &#125;
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;td;
+    for(int i=1;i&lt;=m;i++)
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z),add(x,y,z),add(y,x,0);
+    cout&lt;&lt;EK(s,td);
+    return 0;
+&#125;
+</code></pre>
+<h1 id="ISAP"><a href="#ISAP" class="headerlink" title="ISAP"></a>ISAP</h1><p>引入<strong>高度</strong>的概念<br>对于每一个点，开始的高度为 $0$ ，每个节点只能向高度比它低的节点流出，<strong>汇点高度固定为 $0$</strong><br>每当流入的流量大于流出的流量，即由这个点无法流出，高度 $+1$<br>当源点的高度大于等于 $n$ 时，得到最大流，输出即可</p>
+<p>纯代码，不带优化</p>
+<pre><code class="cpp">//ISAP
+#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt=1;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;q;
+&#125;;
+using namespace lsq;
+int n,m,s,t;
+int x,y,z;
+int d[205];
+int dfs(int u=s,int in=INT_MAX)
+&#123;
+    if(u==t) return in;
+    int out=0;
+    F(q,u)
+    &#123;
+        if(d[u]&gt;d[v]&amp;&amp;w)
+        &#123;
+            int nt=dfs(v,min(w,in));
+            in-=nt;out+=nt;
+            q.e[j].w-=nt;q.e[j^1].w+=nt;
+            if(!in) return out;
+        &#125;
+    &#125;
+    ++d[u];
+    return out;
+&#125;
+int ISAP()
+&#123;
+    int ans=0;
+    while(d[s]&lt;n)
+        ans+=dfs();
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+        if(x==y) continue;
+        q.add(x,y,z),q.add(y,x,0);
+    &#125;
+    cout&lt;&lt;ISAP();
+    return 0;
+&#125;
+</code></pre>
+<p>$BFS$ 优化</p>
+<pre><code class="cpp">//ISAP
+#include&lt;bits/stdc++.h&gt;
+#define int long long
+using namespace std;
+namespace lsq &#123;
+    typedef int lsqxx;
+    struct lq &#123;
+        struct lqbz &#123;
+            lsqxx v,w,nxt;
+        &#125; e[1000005];
+        lsqxx h[1000005],cnt=1;
+        inline void add(lsqxx u,lsqxx v,lsqxx w=1) &#123;
+            e[++cnt].v=v;
+            e[cnt].w=w;
+            e[cnt].nxt=h[u];
+            h[u]=cnt;
+        &#125;
+    #define F(z,u) for(int j=z.h[u],v=z.e[j].v,w=z.e[j].w;j;j=z.e[j].nxt,v=z.e[j].v,w=z.e[j].w)
+    &#125;q,p;
+&#125;;using namespace lsq;
+int n,m,s,t;
+int x,y,z;
+int d[205];
+void BFS()
+&#123;
+    memset(d,-1,sizeof(d));
+    queue&lt;int&gt;r;
+    r.push(t);
+    d[t]=0;
+    while(!r.empty())
+    &#123;
+        int cht=r.front();r.pop();
+        F(p,cht)
+        &#123;
+            if(d[v]!=-1) continue;
+            d[v]=d[cht]+1;
+            r.push(v);
+        &#125;
+    &#125;
+&#125;
+int dfs(int u=s,int in=INT_MAX)
+&#123;
+    if(u==t) return in;
+    int out=0;
+    F(q,u)
+    &#123;
+        if(d[u]&gt;d[v]&amp;&amp;w)
+        &#123;
+            int nt=dfs(v,min(w,in));
+            in-=nt;out+=nt;
+            q.e[j].w-=nt;q.e[j^1].w+=nt;
+            if(!in) return out;
+        &#125;
+    &#125;
+    ++d[u];
+    return out;
+&#125;
+int ISAP()
+&#123;
+    int ans=0;
+    BFS();
+    while(d[s]&lt;n)
+        ans+=dfs();
+    return ans;
+&#125;
+signed main()
+&#123;
+    cin&gt;&gt;n&gt;&gt;m&gt;&gt;s&gt;&gt;t;
+    for(int i=1;i&lt;=m;i++)
+    &#123;
+        int _=scanf(&quot;%lld%lld%lld&quot;,&amp;x,&amp;y,&amp;z);
+        if(x==y) continue;
+        q.add(x,y,z),q.add(y,x,0),p.add(y,x,z);
+    &#125;
+    cout&lt;&lt;ISAP();
+    return 0;
+&#125;
+</code></pre>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">图论</a>
+        </span>
+        
+    </div>
+    <a href="/2023/08/18/%E7%BD%91%E7%BB%9C%E6%B5%81/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/1970/01/01/hello-world/">
+        <h2 class="post-title">Hello World</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            1970/1/1
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+        
+    </div>
+    <a href="/1970/01/01/hello-world/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    <div class="prev">
+        
+    </div>
+    <div class="page-index">
+        
+        <span class="current">1</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/images/an.webp" alt="avatar" />
+        </div>
+        <div class="name">wxh666</div>
+        <div class="description">
+            <p>players<br>…</p>
+
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://argvchs.github.io">Argvchs</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 wxh666
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;wxh666
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
