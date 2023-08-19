@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>组合数学 | wxh666</title>
+        <meta name="author" content="wxh666" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/an.webp" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>WXH666</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;WXH666</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>组合数学</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/8/19
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" style="color: #ff7d73">组合数学</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><a target="_blank" rel="noopener" href="https://lsoi.top/156.html#i-19">转载自</a></p>
+<h2 id="排列组合"><a href="#排列组合" class="headerlink" title="排列组合"></a>排列组合</h2><p>A、C的计算</p>
+<h2 id="求全排列组合"><a href="#求全排列组合" class="headerlink" title="求全排列组合"></a>求全排列组合</h2><h3 id="排列-A-m-n"><a href="#排列-A-m-n" class="headerlink" title="排列 $A_m^n$"></a>排列 $A_m^n$</h3><h4 id="c-自带的全排列函数"><a href="#c-自带的全排列函数" class="headerlink" title="c++自带的全排列函数"></a>c++自带的全排列函数</h4><p><code>next_permutation(start, end, cmp可留空 ) </code><br>start 和 end 为指针</p>
+<pre><code class="cpp">// next_permutation 使用实例
+int main() &#123;  
+    int n = read();  
+    vector&lt;int&gt;v;  
+    for (int i = 1; i &lt;= n; i++)  
+        v.push_back(i);  
+    do &#123;  
+        for (int i = 0; i &lt; n; i++)  
+            cout &lt;&lt; v[i] &lt;&lt; &#39; &#39;;  
+        cout &lt;&lt; endl;  
+    &#125; while (next_permutation(v.begin(), v.end()));  
+    return 0;  
+&#125;
+</code></pre>
+<h4 id="手动实现"><a href="#手动实现" class="headerlink" title="手动实现"></a>手动实现</h4><pre><code class="cpp">//  permute - 全排列
+template&lt;typename Data&gt;
+void _permute(Data *a, int n, int k, void (*f)(Data *, int)) &#123;
+    if(k+1 == n) f(a, n);
+    else for(int i=k; i&lt;n; i++) &#123;
+        std::swap(a[k], a[i]);
+        _permute(a, n, k+1, f);
+        std::swap(a[k], a[i]);
+    &#125;
+&#125;
+
+template&lt;typename Data&gt;
+void permute(Data *a, int n, void (*f)(Data *, int)) &#123;
+    _permute(a, n, 0, f);
+&#125;
+</code></pre>
+<h3 id="组合-C-m-n"><a href="#组合-C-m-n" class="headerlink" title="组合 $C_m^n$"></a>组合 $C_m^n$</h3><p>以下两种方法速度相近，但是递归容易爆栈空间，总体上迭代的方案更优。</p>
+<h4 id="递归实现全组合"><a href="#递归实现全组合" class="headerlink" title="递归实现全组合"></a>递归实现全组合</h4><pre><code class="cpp">//  combine - 组合
+template&lt;typename Data&gt;
+void _combine(Data *a, int n, int m, int k, Data *b, void (*f)(Data *, int)) &#123;
+    for(int i=n-1; i&gt;=m-k-1; i--) &#123;
+        b[m-k-1] = a[i];
+        if(m-k-1 == 0) f(b, m);
+        else _combine(a, i, m, k+1, b, f);
+    &#125;
+&#125;
+
+template&lt;typename Data&gt;
+void combine(Data *a, int n, int m, void (*f)(Data *, int)) &#123;
+    Data b[m];
+    _combine(a, n, m, 0, b, f);
+&#125;
+</code></pre>
+<h4 id="迭代实现全组合"><a href="#迭代实现全组合" class="headerlink" title="迭代实现全组合"></a>迭代实现全组合</h4><pre><code class="cpp">//求C n/m
+#include&lt;iostream&gt;
+using namespace std;
+const int maxn=100;
+int f[maxn];
+inline void print(int n) &#123;
+    for (register int i = 1; i &lt;= n; i++)
+       printf(&quot;%3d&quot;, f[i]);
+    printf(&quot;\n&quot;);
+    return;
+&#125;
+int main() &#123;
+    int n, m;
+    scanf(&quot;%d%d&quot;, &amp;m, &amp;n);
+    for (int i = 1; i &lt;= n; i++) f[i] = i;
+    for (; f[1] &lt;= m - n+1;) &#123;
+        for (; f[n] &lt;= m; f[n]++)
+               print(n);
+           int i=n-1;
+           for (; i &gt;= 1; i--)
+               if (f[i]++ &lt;= i - n + m + 1) break;
+           for (i++; i &gt; 1 &amp;&amp; i &lt;= m; i++)
+               f[i] = f[i - 1] + 1;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h3 id="加法乘法"><a href="#加法乘法" class="headerlink" title="加法乘法"></a>加法乘法</h3><p>分步、同时满足几个性质时，用乘法原理。<br>分类、只能属于一种类型时，用加法原理。</p>
+<h3 id="排列组合的常用数学公式"><a href="#排列组合的常用数学公式" class="headerlink" title="排列组合的常用数学公式"></a>排列组合的常用数学公式</h3><p>从组合数意义上看，显然：<br>$$\large C_n^m &#x3D; C_n^{n-m}$$</p>
+<p>杨辉三角形结论：组合数的递推公式。<br>$$ \large C_n^m &#x3D; C_{n-1}^m + C_{n-1}^{m-1}$$</p>
+<p>阶乘表示的公式：<br>$$\large (^n_k) &#x3D; \frac{n!}{k!(n-k)!}$$</p>
+<p>范德蒙德卷积：n个中选i，m个中选k-i个，等价于n+m里面选k个。从组合意义看显然成立。</p>
+<p>$$ \large \sum_{i&#x3D;0}^k C_n^i + C_m^{k-i} &#x3D; C_{n+m}^k $$</p>
+<p>卢卡斯定理，<a target="_blank" rel="noopener" href="https://lsoi.top/193.html">证明点此</a>：</p>
+<p>$$\large C_n^m \equiv C_{\lfloor \frac n p \rfloor }^{\lfloor \frac m p \rfloor} \cdot C_{n\ mod\ p}^{m\ mod\ p} (mod\ p)$$</p>
+<p>一个普通的公式，直接拆开就能证：</p>
+<p>$$\large (^n_k) \times k &#x3D; n \times (^{n - 1}_{k - 1})$$</p>
+<h3 id="放球模型"><a href="#放球模型" class="headerlink" title="放球模型"></a>放球模型</h3><p>n个球，m个盒。</p>
+<table>
+<thead>
+<tr>
+<th>球有无区别</th>
+<th>盒有无区别</th>
+<th>能否空盒</th>
+<th>方案数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>见1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>见2</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>见3</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>见4</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>见5</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>见6</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>太难了，长大后再学习</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>太难了，长大后再学习</td>
+</tr>
+</tbody></table>
+<p> $1: m^n $</p>
+<p> $2:m!\{^n_m\}$</p>
+<p> $3:\sum_{k&#x3D;1}^m\{^n_k\}$</p>
+<p> $4:\{^n_m\}$</p>
+<p> $5:(^{n+m-1}_n)$</p>
+<p> $6:(^{n-1}_{m-1})$</p>
+<h3 id="可重集合的排列组合"><a href="#可重集合的排列组合" class="headerlink" title="可重集合的排列组合"></a>可重集合的排列组合</h3><h4 id="排列"><a href="#排列" class="headerlink" title="排列"></a>排列</h4><p>总排列数除以因相同种物品标号而多算的部分。k种物品，每种ai个。<br>$$ \Large \frac{A_n^n}{\Pi^k_{i&#x3D;1}A_{a_i}^{a_i}} $$</p>
+<h4 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h4><p>隔板法可以证明：<br>“n个相同物品分给m个不同的人的方案”或“m种物品，每种数量无限，抽出n个的方案”<br>n个物品摆一排，把它们分成m段，每段分给一个人，要在n+1个位置可以重复地划m-1刀，等价于把n+m个分成不为空的m段，那么就是在n+m-1个位置划m-1刀。<br>$$ \Large C_{n+m-1}^{m-1} &#x3D; C_{n+m-1}^{n} $$</p>
+<h3 id="圆排列"><a href="#圆排列" class="headerlink" title="圆排列"></a>圆排列</h3><p>先看链，再看圆。<br>一定要拆环为链，放眼望去就没有几个能在环上求出来的题。</p>
+<h3 id="错排问题"><a href="#错排问题" class="headerlink" title="错排问题"></a>错排问题</h3><p>加入第 $i$ 个元素，钦定$i$在$j$的位置，那么有两种情况，$j$在$i$上就边成$f_{i-1}$，$j$不在$i$上就是$f_{i-2}$，然后$j$一共有$i-1$种取值。</p>
+<p>$$ \large f_i &#x3D; (i-1)(f_{i-1}+f_{i-2}) $$</p>
+<h3 id="二项式定理"><a href="#二项式定理" class="headerlink" title="二项式定理"></a>二项式定理</h3><p>$$ \large (x+y)^n &#x3D; \sum_{i&#x3D;0}^n (^n_i) x^{n-i} \times y^i $$</p>
+<h3 id="斯特林数"><a href="#斯特林数" class="headerlink" title="斯特林数"></a>斯特林数</h3><h4 id="第一类"><a href="#第一类" class="headerlink" title="第一类"></a>第一类</h4><p>记作：$\large [^n_k]$<br>组合意义：n个互不相同的人个坐在k个圆桌上方案数。<br>递推方程：</p>
+<p>$$[ ^n_k ] &#x3D; (n-1) \left [ ^{n - 1}<em>{\ \ \ k}\right ] + [^{n - 1}</em>{k - 1}]$$</p>
+<p>特殊性质：</p>
+<p>$$\sum_{i&#x3D;1}^n[^n_i]&#x3D;n!&#x3D;n^{\underline n}$$</p>
+<p>函数值表：<br><img src="https://lsoi.top/wp-content/uploads/2023/08/v2-ef3935cc923a63d5f50e82f4f40e5214_720w.webp" title="表格"></p>
+<h4 id="第二类"><a href="#第二类" class="headerlink" title="第二类"></a>第二类</h4><p>记作：$\large \{ ^n_k \}$<br>组合意义：n个互不相同的球放进k个盒子（盒子相同且不为空）中的方案数。<br>递推方程：</p>
+<p>$$\{ ^n_k \} &#x3D; k \times \{ ^{n-1}<em>k \} + \{ ^{n-1}</em>{k-1} \}$$</p>
+<p>特殊性质：</p>
+<p>$$ \sum_{k&#x3D;1}^n\{^n_k\}\times x^{\underline k} &#x3D; x^n $$</p>
+<p>$$ \sum_{k &#x3D; 1} ^ n (^ n _ k ) \{ ^m_k \} k! &#x3D; n^m $$</p>
+<p>函数值表：<br><img src="https://lsoi.top/wp-content/uploads/2023/08/v2-2daa06293134ec2258c6c41a0df0fe43_720w.webp"></p>
+<h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>斯特林数经常可以在下降幂、上升幂和通常幂中建立联系。</p>
+<p>下降幂和通常幂：</p>
+<p>$$\sum_{k &#x3D; 1} ^ n \{^n_k\} x ^ {\underline k} &#x3D; x^n$$</p>
+<p>上升幂和通常幂：</p>
+<p>$$\sum_{k &#x3D; 1} ^ n [^n_k] x ^ k &#x3D; x ^ {\overline n}$$</p>
+<p>组合数和下降幂：</p>
+<p>$$(^n_k) &#x3D; \frac{ n^{\underline k} } { k! } $$</p>
+<p>$$ (^n_k) k^{\underline m} &#x3D; (^{n-m}_{k-m})\times n^{\underline m} $$</p>
+<p>下降幂同余式：</p>
+<p>$$x^{\underline p} \equiv x ^ p - x (mod\ p)$$</p>
+<p>下降幂与上升幂：</p>
+<p>$$(-x)^{\underline n} &#x3D; (-1)^n x^{\overline n} \\ (-x)^{\overline n} &#x3D; (-1)^n x^{\underline n}$$</p>
+<h2 id="一些做题时候遇到的抽象式子"><a href="#一些做题时候遇到的抽象式子" class="headerlink" title="一些做题时候遇到的抽象式子"></a>一些做题时候遇到的抽象式子</h2><h3 id="基本sigma转换"><a href="#基本sigma转换" class="headerlink" title="基本sigma转换"></a>基本sigma转换</h3><p>$$\sum_{i&#x3D;0}^n\sum_{j&#x3D;0}^i f(i,j) &#x3D; \sum_{j&#x3D;0}^n\sum_{i&#x3D;j}^n f(i,j)\ (f\text{可以是任何函数})$$</p>
+<h3 id="幂的变换"><a href="#幂的变换" class="headerlink" title="幂的变换"></a>幂的变换</h3><p>$$\sum{i&#x3D;0}^n a_i k^i &#x3D; \sum_{i&#x3D;0}^n b_i k^{\underline i} $$</p>
+<p>$$其中a_i给定，b_i要算$$</p>
+<p>$$b_i &#x3D; \sum_{j&#x3D;i}^n\{^j_i\} a_j$$</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2023 wxh666
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;wxh666
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "",
+    })
+</script>
+
+
+        
+    </body>
+</html>
+<canvas
+    id="fireworks"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"
+></canvas>
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+<script src="/js/fireworks.min.js"></script>
+<canvas
+    id="background"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"
+></canvas>
+<script src="/js/background.min.js"></script>
+<div id="cursor"></div>
+<link rel="stylesheet" href="/css/cursor.min.css" />
+<script src="/js/cursor.min.js"></script>
